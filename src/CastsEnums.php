@@ -58,6 +58,10 @@ trait CastsEnums
         if ($this->isEnumAttribute($key)) {
             $enumClass = $this->getEnumClass($key);
             if (! $value instanceof $enumClass) {
+                if($value === 0) {
+                    $value = (string)$value;
+                }
+
                 $value = new $enumClass($value);
             }
 
